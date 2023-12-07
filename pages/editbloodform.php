@@ -84,7 +84,11 @@
                                                     <input class="form-control" type="text" name="address"
                                                         value='<?php echo $row['address']; ?>' required>
                                                 </div>
-
+                                                <div class="form-group col-lg-6">
+                                                    <label>Zip Code</label>
+                                                    <input class="form-control" type="text" name="zipCode"
+                                                        value='<?php echo $row['zipCode']; ?>' required>
+                                                </div>
                                                 <div class="form-group col-lg-6">
                                                     <label>Enter Contact Number</label>
                                                     <input class="form-control" type="number" name="contact"

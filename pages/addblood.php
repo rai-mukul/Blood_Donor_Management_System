@@ -81,6 +81,14 @@
                                                         name="address" required>
                                                 </div>
                                             </div>
+                                             <!-- Zip Code -->
+                                             <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Zip Code</label>
+                                                    <input class="form-control" placeholder="Zip Code" type="number"
+                                                        name="zipCode" required>
+                                                </div>
+                                            </div>
                                             <!-- Contact Number -->
                                             <div class="col-lg-6">
                                                 <div class="form-group">

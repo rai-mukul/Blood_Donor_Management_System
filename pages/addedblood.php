@@ -26,13 +26,6 @@
     <link rel="stylesheet" href="../icofont/icofont.min.css">
 
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <body>
@@ -68,6 +61,7 @@
                                             $weight = $_POST["weight"];
                                             $bloodgroup = $_POST["bloodgroup"];
                                             $address = $_POST["address"];
+                                            $zipCode = $_POST["zipCode"];
                                             $contact = $_POST["contact"];
                                             $bloodqty = $_POST["bloodqty"];
                                             $collection = $_POST["collection"];
@@ -75,11 +69,11 @@
                                             include 'dbconnect.php';
 
                                             // Prepare the SQL statement
-                                            $qry = "INSERT INTO blood (name, gender, dob, weight, bloodgroup, address, contact, bloodqty, collection) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                                            $qry = "INSERT INTO blood (name, gender, dob, weight, bloodgroup, address, zipCode, contact, bloodqty, collection) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                                             $stmt = $pdo->prepare($qry);
 
                                             // Execute the statement
-                                            $result = $stmt->execute([$name, $gender, $dob, $weight, $bloodgroup, $address, $contact, $bloodqty, $collection]);
+                                            $result = $stmt->execute([$name, $gender, $dob, $weight, $bloodgroup, $address, $zipCode, $contact, $bloodqty, $collection]);
 
                                             if (!$result) {
                                                 echo "ERROR";

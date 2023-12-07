@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <title>View Donor | BDMS</title>
@@ -27,6 +28,15 @@
                             </div>
 
                             <div class="panel-body">
+                                <!-- Add search form -->
+                                <form method="post" action="">
+                                    <div class="form-group">
+                                        <label for="search">Search:</label>
+                                        <input type="text" class="form-control" id="search" name="search" placeholder="Enter search term">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" style="margin: 4px">Search</button>
+                                </form>
+
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover"
                                         id="dataTables-example">
@@ -36,7 +46,25 @@
                                         include "dbconnect.php";
 
                                         // Using PDO to fetch data
-                                        $qry = "SELECT * FROM donor";
+                                        // Check if search form is submitted
+                                        if (isset($_POST['search'])) {
+                                            $search = $_POST['search'];
+                                            $qry = "SELECT * FROM donor WHERE 
+                                                    name LIKE '%$search%' OR 
+                                                    username LIKE '%$search%' OR 
+                                                    guardiansname LIKE '%$search%' OR 
+                                                    gender LIKE '%$search%' OR 
+                                                    dob LIKE '%$search%' OR 
+                                                    weight LIKE '%$search%' OR 
+                                                    bloodgroup LIKE '%$search%' OR 
+                                                    email LIKE '%$search%' OR 
+                                                    address LIKE '%$search%' OR 
+                                                    zipCode LIKE '%$search%' OR 
+                                                    contact LIKE '%$search%'";
+                                        } else {
+                                            $qry = "SELECT * FROM donor";
+                                        }
+
                                         $stmt = $pdo->query($qry);
 
                                         echo "
@@ -86,8 +114,8 @@
         </div>
 
     </div>
-	<?php include 'includes/bodyScript.php' ?>
-	<?php include 'includes/footerData.php' ?>
+    <?php include 'includes/bodyScript.php' ?>
+    <?php include 'includes/footerData.php' ?>
 
 </body>
 

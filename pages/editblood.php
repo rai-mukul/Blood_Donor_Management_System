@@ -50,6 +50,7 @@
                                                     <th>D.O.B</th>
                                                     <th>Weight</th>
                                                     <th>Address</th>
+                                                    <th>Zip Code</th>
                                                     <th>Contact</th>
                                                     <th>Quantity</th>
                                                     <th>Collection Date</th>
@@ -67,6 +68,7 @@
                                                         <td>{$row['dob']}</td>
                                                         <td>{$row['weight']}</td>
                                                         <td>{$row['address']}</td>
+                                                        <td>{$row['zipCode']}</td>
                                                         <td>{$row['contact']}</td>
                                                         <td>{$row['bloodqty']}</td>
                                                         <td>{$row['collection']}</td>

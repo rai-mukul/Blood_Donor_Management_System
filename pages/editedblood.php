@@ -34,14 +34,15 @@
                                         $weight = htmlspecialchars($_POST["weight"]);
                                         $bloodgroup = htmlspecialchars($_POST["bloodgroup"]);
                                         $address = htmlspecialchars($_POST["address"]);
+                                        $zipCode = htmlspecialchars($_POST["zipCode"]);
                                         $contact = htmlspecialchars($_POST["contact"]);
                                         $bloodqty = htmlspecialchars($_POST["bloodqty"]);
                                         $collection = htmlspecialchars($_POST["collection"]);
                                         $id = htmlspecialchars($_POST['id']);
                                         
-                                        $qry = "UPDATE blood SET name=?, gender=?, dob=?, weight=?, bloodgroup=?, address=?, contact=?, bloodqty=?, collection=? WHERE id=?";
+                                        $qry = "UPDATE blood SET name=?, gender=?, dob=?, weight=?, bloodgroup=?, address=?, zipCode=?, contact=?, bloodqty=?, collection=? WHERE id=?";
                                         $stmt = $pdo->prepare($qry);
-                                        $stmt->execute([$name, $gender, $dob, $weight, $bloodgroup, $address, $contact, $bloodqty, $collection, $id]);
+                                        $stmt->execute([$name, $gender, $dob, $weight, $bloodgroup, $address, $zipCode, $contact, $bloodqty, $collection, $id]);
                                         
                                         if (!$stmt) {
                                             echo "ERROR";
