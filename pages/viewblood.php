@@ -7,9 +7,9 @@
 </head>
 
 <body>
-    <div id="wrapper">
-        <?php include 'includes/nav.php' ?>
-        <div id="page-wrapper">
+    <div class="wrapper">
+        <?php include 'includes/sidebar.php' ?>
+        <div class="main p-2">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
@@ -18,16 +18,18 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="panel panel-default">
+                        <div class="card p-1">
                             <div class="panel-heading"> Total Records of available bloods </div>
                             <div class="panel-body">
                                 <!-- Add search form -->
-                                <form method="post" action="">
+                                <form method="post" action="" class="pb-3">
                                     <div class="form-group">
                                         <label for="search">Search:</label>
                                         <input type="text" class="form-control" id="search" name="search" placeholder="Enter search term">
                                     </div>
-                                    <button type="submit" class="btn btn-primary" style="margin: 4px">Search</button>
+                                    <div class="pt-3">
+                                        <button type="submit" class="btn btn-primary" style="margin: 4px">Search</button>
+                                    </div>
                                 </form>
 
                                 <div class="table-responsive">

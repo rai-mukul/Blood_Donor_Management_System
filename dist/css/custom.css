@@ -1,6 +1,115 @@
 .form-control {
-    width: 100%!important;
+  width: 100% !important;
 }
 /* .row{
     width: 100%!important;
 } */
+
+.btn-donor {
+  border: 4px solid #f44336;
+  color: #f44336;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 12px 30px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  position: relative;
+  outline: none;
+  background-color: transparent;
+  margin: 100px auto;
+  display: table;
+}
+.btn-donor::before,
+.btn-donor::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 4px;
+  background-color: #fff;
+  transform: skewX(50deg);
+  transition: 0.5s linear;
+}
+.btn-donor::before {
+  top: -4px;
+  left: 10%;
+}
+.btn-donor::after {
+  bottom: -4px;
+  right: 10%;
+}
+.btn-donor:hover::before {
+  left: 75%;
+}
+.btn-donor:hover::after {
+  right: 75%;
+}
+
+.btn-admin {
+  border: 4px solid #019b7f;
+  color: #019b7f;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 12px 30px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  position: relative;
+  outline: none;
+  background-color: transparent;
+  margin: 100px auto;
+  display: table;
+}
+.btn-admin::before,
+.btn-admin::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 4px;
+  background-color: #fff;
+  transform: skewX(50deg);
+  transition: 0.5s linear;
+}
+.btn-admin::before {
+  top: -4px;
+  left: 10%;
+}
+.btn-admin::after {
+  bottom: -4px;
+  right: 10%;
+}
+.btn-admin:hover::before {
+  left: 75%;
+}
+.btn-admin:hover::after {
+  right: 75%;
+}
+
+/* admin background */
+.admin-bg {
+  padding: 80px 0;
+  /* background: url(https://images.unsplash.com/photo-1572470615886-dca9d7e809f2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) no-repeat; */
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+  overflow: hidden; /* This will hide the overflow content */
+  background: #c9ccd3;
+  background-image: linear-gradient(
+    -180deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  background-blend-mode: lighten;
+}
+
+/* donor login */
+.login-page {
+  width: 100%;
+  height: 100vh;
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(-225deg, #FFFEFF 0%, #D7FFFE 100%);
+}
+.form-right i {
+  font-size: 100px;
+}

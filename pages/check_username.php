@@ -1,5 +1,4 @@
 <?php
-
 include 'dbconnect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
@@ -17,5 +16,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
         echo "<span style='color: green;'>Username available</span>";
     }
 }
-
 ?>

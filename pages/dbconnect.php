@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$dbname = 'fallproject';
+$dbname = 'blood_donar';
 $usernam = 'raimukul';
 $dbpassword = 'M@xfZ6lr2IYy9[LW';
 

@@ -8,42 +8,36 @@
 </head>
 
 <body>
-    <div id="wrapper">
-        <?php include 'includes/nav.php' ?>
-
-        <div id="page-wrapper">
+    <div class="wrapper">
+        <?php include 'includes/sidebar.php' ?>
+        <div class="main p-2">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Edit Blood Details</h1>
                     </div>
                 </div>
+                <div class="card p-1">
+                    <div class="card-header">
+                        Total Records of available bloods
+                    </div>
 
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Total Records of available bloods
-                            </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover"
-                                        id="dataTables-example">
+                                <?php
+                                include "dbconnect.php";
 
-                                        <?php
+                                try {
 
-                                        // Include the database connection file
-                                        include "dbconnect.php";
+                                    // Fetch data using prepared statement
+                                    $stmt = $pdo->query("SELECT * FROM blood");
 
-                                        try {
-
-                                            // Fetch data using prepared statement
-                                            $stmt = $pdo->query("SELECT * FROM blood");
-
-                                            echo "
+                                    echo "
                                             <thead>
                                                 <tr>
+                                                    <th>Edit</i></th>
                                                     <th>Blood Group</th>
                                                     <th>Full Name</th>
                                                     <th>Gender</th>
@@ -54,14 +48,15 @@
                                                     <th>Contact</th>
                                                     <th>Quantity</th>
                                                     <th>Collection Date</th>
-                                                    <th><i class='fa fa-pencil'></i></th>
+                                                   
                                                 </tr>
                                             </thead>";
 
-                                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                                echo "
+                                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                        echo "
                                                 <tbody>
                                                     <tr class='gradeA'>
+                                                    <td><a href='editbloodform.php?id={$row['id']}'><i class='bi bi-pencil-square', style='font-size: 1.5rem; color: cornflowerblue;'></i></a></td>
                                                         <td>{$row['bloodgroup']}</td>
                                                         <td>{$row['name']}</td>
                                                         <td>{$row['gender']}</td>
@@ -72,21 +67,17 @@
                                                         <td>{$row['contact']}</td>
                                                         <td>{$row['bloodqty']}</td>
                                                         <td>{$row['collection']}</td>
-                                                        <td><a href='editbloodform.php?id={$row['id']}'><i class='fa fa-edit' style='color:green'></i></a></td>
+                                                      
                                                     </tr>
                                                 </tbody>";
-                                            }
-                                        } catch (PDOException $e) {
-                                            echo "Failed to connect to MySQL: " . $e->getMessage();
-                                            // Handle the error more gracefully in a production environment
-                                            // For example, log the error and show a user-friendly message
-                                            die();
-                                        }
+                                    }
+                                } catch (PDOException $e) {
+                                    echo "Failed to connect to MySQL: " . $e->getMessage();
+                                    die();
+                                }
 
-                                        ?>
-                                    </table>
-                                </div>
-                            </div>
+                                ?>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -94,19 +85,9 @@
         </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+    <?php include 'includes/bodyScript.php' ?>
+    <?php include 'includes/footerData.php' ?>
 
 </body>
-<?php include 'includes/footerData.php' ?>
 
 </html>

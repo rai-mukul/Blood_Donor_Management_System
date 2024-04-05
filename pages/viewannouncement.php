@@ -6,26 +6,19 @@
 </head>
 
 <body>
-    <div id="wrapper">
-
-        <?php include 'includes/nav.php' ?>
-
+    <div class="wrapper"> 
+        <?php include 'includes/sidebar.php' ?>
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class=".col-lg-12">
-                        <h1 class="page-header">Announcement Detail</h1>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class=".col-lg-12">
-                        <div class="panel panel-default">
+                        <div class="card p-1">
+                        <div class="card-header h4">Announcement Detail</div>
                             <div class="panel-heading">
                                 Total Records of announcement made
                             </div>
 
-                            <div class="panel-body">
+                            <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                         <thead>

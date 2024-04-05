@@ -18,7 +18,7 @@
 
                 <div class="row">
                     <div class=".col-lg-12">
-                        <div class="panel panel-default">
+                        <div class="card p-1">
                             <div class="panel-heading">
                                 Total Records of available bloods
                             </div>

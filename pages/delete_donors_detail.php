@@ -6,11 +6,9 @@
 </head>
 
 <body>
-    <div id="wrapper">
-
-        <?php include 'includes/nav.php' ?>
-
-        <div id="page-wrapper">
+    <div class="wrapper">
+        <?php include 'includes/sidebar.php' ?>
+        <div class="main p-2">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
@@ -20,15 +18,14 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="panel panel-default">
+                        <div class="card p-1">
                             <div class="panel-heading">
                                 Total Records of available donors
                             </div>
 
                             <div class="panel-body">
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover"
-                                        id="dataTables-example">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                         <?php
 
                                         include "dbconnect.php";
@@ -40,6 +37,7 @@
                                             echo "
                                                 <thead>
                                                     <tr>
+                                                    <th>Delete</th>
                                                         <th>Name</th>
                                                         <th>Username</th>
                                                         <th>Guardian's Name</th>
@@ -50,7 +48,7 @@
                                                         <th>Email</th>
                                                         <th>Address</th>
                                                         <th>Contact</th>
-                                                        <th><i class='fa fa-pencil'></i></th>
+                                                       
                                                     </tr>
                                                 </thead>";
 
@@ -58,6 +56,7 @@
                                                 echo "
                                                     <tbody>
                                                         <tr>
+                                                        <td><a href='modal_delete_donor.php?id=" . $row['id'] . "'><i class='bi bi-trash3' style='font-size: 1.5rem; color: red;'></i></a></td>
                                                             <td>" . $row['name'] . "</td>
                                                             <td>" . $row['username'] . "</td>
                                                             <td>" . $row['guardiansname'] . "</td>
@@ -68,7 +67,7 @@
                                                             <td>" . $row['email'] . "</td>
                                                             <td>" . $row['address'] . "</td>
                                                             <td>" . $row['contact'] . "</td>
-                                                            <td><a href='modal_delete_donor.php?id=" . $row['id'] . "'><i class='fa fa-trash' style='color:red'></i></a></td>
+                                                            
                                                         </tr>
                                                     </tbody>";
                                             }

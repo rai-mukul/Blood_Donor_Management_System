@@ -66,7 +66,7 @@ $.extend( DataTable.ext.classes, {
 	sWrapper:      "dataTables_wrapper form-inline dt-material",
 	sFilterInput:  "form-control input-sm",
 	sLengthSelect: "form-control input-sm",
-	sProcessing:   "dataTables_processing panel panel-default"
+	sProcessing:   "dataTables_processing card p-1"
 } );
 
 
