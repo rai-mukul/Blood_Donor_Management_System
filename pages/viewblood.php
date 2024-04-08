@@ -19,8 +19,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card p-1">
-                            <div class="panel-heading"> Total Records of available bloods </div>
-                            <div class="panel-body">
+                            <div class="card-header"> Total Records of available bloods </div>
+                            <div class="card-body">
                                 <!-- Add search form -->
                                 <form method="post" action="" class="pb-3">
                                     <div class="form-group">

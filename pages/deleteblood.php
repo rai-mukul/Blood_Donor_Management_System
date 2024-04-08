@@ -20,14 +20,13 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card p-1">
-                            <div class="panel-heading">
+                            <div class="card-header">
                                 Total Records of available bloods
                             </div>
 
-                            <div class="panel-body">
+                            <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover"
-                                        id="dataTables-example">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                         <?php
                                         include "dbconnect.php";
 
@@ -37,6 +36,7 @@
                                         echo "
                                         <thead>
                                             <tr>
+                                            <th>Action</th>
                                                 <th>Blood Group</th>
                                                 <th>Full Name</th>
                                                 <th>Gender</th>
@@ -46,7 +46,7 @@
                                                 <th>Contact</th>
                                                 <th>Quantity</th>
                                                 <th>Collection Date</th>
-                                                <th><i class='fa fa-pencil'></i></th>
+                                              
                                             </tr>
                                         </thead>";
 
@@ -54,6 +54,7 @@
                                             echo "
                                             <tbody>
                                                 <tr class='gradeA'>
+                                                <td><a href='deletebloodrecord.php?id={$row['id']}'><i class='bi bi-trash3' style='font-size: 1.5rem; color: red;'></i></a></td>
                                                     <td>{$row['bloodgroup']}</td>
                                                     <td>{$row['name']}</td>
                                                     <td>{$row['gender']}</td>
@@ -63,9 +64,7 @@
                                                     <td>{$row['contact']}</td>
                                                     <td>{$row['bloodqty']}</td>
                                                     <td>{$row['collection']}</td>
-                                                    <td><a href='deletebloodrecord.php?id={$row['id']}'><i
-                                                                class='fa fa-trash'
-                                                                style='color:red'></i></a></td>
+                                                    
                                                 </tr>
                                             </tbody>";
                                         }

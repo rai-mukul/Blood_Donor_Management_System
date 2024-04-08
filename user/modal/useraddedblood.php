@@ -44,10 +44,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card p-1">
-                        <div class="panel-heading">
+                        <div class="card-header">
                             MESSAGE BOX
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <form role="form" action="index.php" method="post">
@@ -89,7 +89,7 @@
                             </div>
                             <!-- /.row (nested) -->
                         </div>
-                        <!-- /.panel-body -->
+                        <!-- /.card-body -->
                     </div>
                     <!-- /.panel -->
                 </div>

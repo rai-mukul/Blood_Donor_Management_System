@@ -4,24 +4,6 @@
 <head>
     <title>Add Donor | BDMS</title>
     <?php include 'includes/headerData.php' ?>
-    <style>
-        .message-container {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            padding: 5px;
-        }
-
-        .available {
-            color: green;
-        }
-
-        .not-available {
-            color: red;
-        }
-    </style>
 </head>
 
 <body>
@@ -35,81 +17,91 @@
                     <div class="card-header">
                         Please fill up the form below:
                     </div>
+                    <?php if (isset($_GET['success']) && $_GET['success'] == 'true') { ?>
+                        <div id="successAlert" class="alert alert-success">Donor added successfully!</div>
+                        <script>
+                            setTimeout(function() {
+                                $('#successAlert').fadeOut('slow');
+                            }, 5000);
+                        </script>
+                    <?php } ?>
                     <div class="card-body">
                         <form role="form" id="addDonorForm" action="modal_addDonor.php" method="post" autocomplete="off">
                             <div class="row">
-                                        <div class="form-group col-lg-6 pt-3">
-                                            <label>Enter Full Name</label>
-                                            <input class="form-control" name="name" type="text" placeholder="First Name and Last Name" required>
-                                        </div>
+                                <div class="form-group col-lg-6 pt-3">
+                                    <label>Enter Full Name</label>
+                                    <input class="form-control" name="name" type="text" placeholder="First Name and Last Name" required>
+                                </div>
 
-                                        <div class="form-group col-lg-6 pt-3">
-                                            <label>Enter Parent's Name</label>
-                                            <input class="form-control" placeholder="Parents's Name" name="guardiansname" required>
-                                        </div>
-
-
-                                        <div class="form-group col-lg-6 pt-3">
-                                            <label for="gender">Gender</label>
-                                            <select class="form-control" id="gender" name="gender" required>
-                                                <option value="" disabled selected>Select Gender</option>
-                                                <option value="M">Male</option>
-                                                <option value="F">Female</option>
-                                                <option value="O">Other</option>
-                                            </select>
-                                        </div>
+                                <div class="form-group col-lg-6 pt-3">
+                                    <label>Enter Parent's Name</label>
+                                    <input class="form-control" placeholder="Parents's Name" name="guardiansname" required>
+                                </div>
 
 
-                                        <div class="form-group col-lg-6 pt-3">
-                                            <label>Enter D.O.B</label>
-                                            <input class="form-control" type="date" name="dob" required>
-                                        </div>
+                                <div class="form-group col-lg-6 pt-3">
+                                    <label for="gender">Gender</label>
+                                    <select class="form-control" id="gender" name="gender" required>
+                                        <option value="" disabled selected>Select Gender</option>
+                                        <option value="M">Male</option>
+                                        <option value="F">Female</option>
+                                        <option value="O">Other</option>
+                                    </select>
+                                </div>
 
 
-                                        <div class="form-group col-lg-6 pt-3">
-                                            <label>Enter Weight</label>
-                                            <input class="form-control" type="number" placeholder="Enter Weight" name="weight" required>
-                                        </div>
+                                <div class="form-group col-lg-6 pt-3">
+                                    <label>Enter D.O.B</label>
+                                    <input class="form-control" type="date" name="dob" required>
+                                </div>
 
 
-                                        <div class="form-group col-lg-6 pt-3">
-                                            <label for="bloodgroup">Blood Group</label>
-                                            <select class="form-control" id="bloodgroup" name="bloodgroup" required>
-                                                <option value="" disabled selected>Select Blood Group</option>
-                                                <option value="A+">A+</option>
-                                                <option value="A-">A-</option>
-                                                <option value="B+">B+</option>
-                                                <option value="B-">B-</option>
-                                                <option value="AB+">AB+</option>
-                                                <option value="AB-">AB-</option>
-                                                <option value="O+">O+</option>
-                                                <option value="O-">O-</option>
-                                            </select>
-                                        </div>
+                                <div class="form-group col-lg-6 pt-3">
+                                    <label>Enter Weight</label>
+                                    <input class="form-control" type="number" placeholder="Enter Weight" name="weight" required>
+                                </div>
 
 
-                                        <div class="form-group col-lg-6 pt-3">
-                                            <label>Enter Email Id</label>
-                                            <input class="form-control" type="email" placeholder="Enter Email Id" name="email" required>
-                                        </div>
+                                <div class="form-group col-lg-6 pt-3">
+                                    <label for="bloodgroup">Blood Group</label>
+                                    <select class="form-control" id="bloodgroup" name="bloodgroup" required>
+                                        <option value="" disabled selected>Select Blood Group</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                    </select>
+                                </div>
 
 
-                                        <div class="form-group col-lg-6 pt-3">
-                                            <label>Enter Address</label>
-                                            <input class="form-control" type="text" placeholder="Enter Address Here" name="address" required>
-                                        </div>
+                                <div class="form-group col-lg-6 pt-3">
+                                    <label>Enter Email Id</label>
+                                    <input class="form-control" type="email" placeholder="Enter Email Id" id="email" name="email" required>
+                                    <div id="emailAvailability"></div>
+                                </div>
 
-                                        <div class="form-group col-lg-6 pt-3">
-                                            <label>Enter ZIP code </label>
-                                            <input class="form-control" type="number" placeholder="ZIP code" name="zipCode" required>
-                                        </div>
 
-                                        <div class="form-group col-lg-6 pt-3">
-                                            <label>Enter Contact Number</label>
-                                            <input class="form-control" type="number" placeholder="Contact Number" name="contact" required>
-                                        </div>
+                                <div class="form-group col-lg-6 pt-3">
+                                    <label>Enter Address</label>
+                                    <input class="form-control" type="text" placeholder="Enter Address Here" name="address" required>
 
-                                        <div class="form-group col-lg-6 pt-3">
+                                </div>
+
+                                <div class="form-group col-lg-6 pt-3">
+                                    <label>Enter ZIP code </label>
+                                    <input class="form-control" type="number" placeholder="ZIP code" name="zipCode" required>
+                                </div>
+
+                                <div class="form-group col-lg-6 pt-3">
+                                    <label>Enter Contact Number</label>
+                                    <input class="form-control" type="number" placeholder="Contact Number" name="contact" required>
+                                </div>
+
+                                <div class="form-group col-lg-6 pt-3">
                                     <label>Enter Username</label>
                                     <input class="form-control" placeholder="Enter Here" name="username" id="username" required>
                                     <div id="usernameAvailability"></div>
@@ -142,6 +134,7 @@
             }
         }
 
+
         // Check username availability using jQuery AJAX
         $(document).ready(function() {
             $("#username").keyup(function() {
@@ -166,8 +159,35 @@
                     $('#usernameAvailability').hide();
                 }
             });
+
+            $("#email").keyup(function() {
+                var email = $(this).val();
+
+                if (email !== '') {
+                    $.ajax({
+                        url: 'check_email.php',
+                        method: 'POST',
+                        data: {
+                            email: email
+                        },
+                        success: function(data) {
+                            $('#emailAvailability').html(data);
+                            $('#emailAvailability').show();
+
+                            // Enable/disable the submit button based on availability
+                            var isAvailable = data.indexOf("Email available") !== -1;
+                            $("#submitBtn").prop("disabled", !isAvailable);
+                        }
+                    });
+                } else {
+                    $('#emailAvailability').hide();
+                }
+            });
         });
     </script>
+
+
+
     <?php include 'includes/bodyScript.php' ?>
     <?php include 'includes/footerData.php' ?>
 </body>

@@ -21,10 +21,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card p-1">
-                        <div class="panel-heading">
+                        <div class="card-header">
                             Please fill up the form below:
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
                             <form role="form" action="modalUser_addBlood.php" method="POST">
                                 <div class="row">
                                     <div class="form-group col-lg-6">

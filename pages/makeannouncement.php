@@ -25,8 +25,9 @@ $session_id = $_SESSION['user_id'];
         <div class="main p-2">
             <div class="">
                 <div class="col-lg-12">
+                <h1 class="page-header">Make Announcement</h1>
                     <div class="card p-1">
-                        <div class="card-header h4">Make Announcement</div>
+                        <div class="card-header">Fill this form to add announcement.</div>
                         <div class="card-body">
                             <form role="form" action="model_announce.php" method="post">
                                 <div class="row">

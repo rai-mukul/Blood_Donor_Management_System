@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
 
     if ($stmt->execute()) {
         echo "DELETED";
-        header('Location: deleteannouncement.php');
+        header('Location: editannounceform.php');
     } else {
         echo "ERROR!!";
     }

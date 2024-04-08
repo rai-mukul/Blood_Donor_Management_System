@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-yellow">
-                        <div class="panel-heading">
+                        <div class="card-header">
                             <div class="row">
                                 <div class="col-xs-3">
                                     <i class="fa fa-bullhorn fa-5x"></i>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-green">
-                        <div class="panel-heading">
+                        <div class="card-header">
                             <div class="row">
                                 <div class="col-xs-3">
                                     <i class="icofont-blood icofont-5x"></i>
@@ -67,7 +67,7 @@
 
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-warning">
-                        <div class="panel-heading">
+                        <div class="card-header">
                             <div class="row">
                                 <div class="col-xs-3">
                                     <i class="icofont-blood-drop icofont-5x"></i>
