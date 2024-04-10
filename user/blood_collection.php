@@ -1,14 +1,15 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <title>User Collections | BDMS</title>
-    <?php include 'includes/headerFile2.php' ?>
+    <?php include 'includes/headerData.php'; ?>
 </head>
 
 <body>
-    <div id="wrapper">
-        <?php include 'includes/donornav.php' ?>
-        <div id="page-wrapper">
+    <div class="wrapper">
+        <?php include 'includes/sidebar.php'; ?>
+        <div class="main p-3">
             <div class="container-fluid">
                 <div class="row">
                     <div class=".col-lg-12">
@@ -24,6 +25,20 @@
                             </div>
 
                             <div class="card-body">
+                                <?php
+                                if (isset($_GET['success'])) {
+                                    echo "<div id='success-alert' class='alert alert-success'>" . $_GET['success'] . "</div>";
+                                } elseif (isset($_GET['error'])) {
+                                    echo "<div id='error-alert' class='alert alert-danger'>" . $_GET['error'] . "</div>";
+                                }
+                                ?>
+                                <script>
+                                    setTimeout(function() {
+                                        document.getElementById('success-alert').style.display = 'none';
+                                        document.getElementById('error-alert').style.display = 'none';
+                                    }, 5000);
+                                </script>
+
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                         <?php
@@ -39,8 +54,6 @@
                                                         <th>Blood Group</th>
                                                         <th>Full Name</th>
                                                         <th>Gender</th>
-                                                        <th>D.O.B</th>
-                                                        <th>Weight</th>
                                                         <th>Address</th>
                                                         <th>ZIP Code</th>
                                                         <th>Contact</th>
@@ -55,8 +68,6 @@
                                                         <td>" . $row['bloodgroup'] . "</td>
                                                         <td>" . $row['name'] . "</td>
                                                         <td>" . $row['gender'] . "</td>
-                                                        <td>" . $row['dob'] . "</td>
-                                                        <td>" . $row['weight'] . "</td>
                                                         <td>" . $row['address'] . "</td>
                                                         <td>" . $row['zipCode'] . "</td>
                                                         <td>" . $row['contact'] . "</td>
@@ -79,8 +90,9 @@
         </div>
     </div>
 
-    <?php include 'includes/bodyScript.php' ?>
+    <?php include 'includes/bodyScript.php'; ?>
 </body>
-<?php include '../pages/includes/footerData.php' ?>
+
+<?php include '../pages/includes/footerData.php'; ?>
 
 </html>

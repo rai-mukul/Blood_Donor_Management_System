@@ -1,7 +1,4 @@
-<script src="../vendor/jquery/jquery.min.js"></script>
-<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="../vendor/metisMenu/metisMenu.min.js"></script>
-<script src="../dist/js/sb-admin-2.js"></script>
-<script src="../vendor/raphael/raphael.min.js"></script>
-<script src="../vendor/morrisjs/morris.min.js"></script>
-<script src="../data/morris-data.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

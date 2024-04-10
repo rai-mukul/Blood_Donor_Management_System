@@ -2,15 +2,13 @@
 
 <head>
     <title>User Announcement | BDMS</title>
-    <?php include 'includes/headerFile2.php' ?>
+    <?php include 'includes/headerData.php' ?>
 </head>
 
 <body>
-    <div id="wrapper">
-
-        <?php include 'includes/donornav.php' ?>
-
-        <div id="page-wrapper">
+<div class="wrapper">
+        <?php include 'includes/sidebar.php' ?>
+        <div class="main p-3">
             <div class="container-fluid">
                 <div class="row">
                     <div class=".col-lg-12">

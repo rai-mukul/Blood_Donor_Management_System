@@ -1,14 +1,12 @@
 <?php
-// Start session
 session_start();
+require_once('auth.php');
+checkAuthorization();
 
-// Check whether the session variable SESS_MEMBER_ID is present or not
-if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
-    header("location: index.php");
+if (isset($_SESSION['error_message']) && isset($_SESSION['redirect_url'])) {
+    header("Refresh: 0; URL=" . $_SESSION['redirect_url']); // Redirect after 5 seconds
     exit();
 }
-
-$session_id = $_SESSION['user_id'];
 ?>
 
 <!DOCTYPE html>
@@ -23,9 +21,11 @@ $session_id = $_SESSION['user_id'];
     <div class="wrapper">
         <?php include 'includes/sidebar.php' ?>
         <div class="main p-3">
-       
+            <div class="row">
+                <div class="col-lg-12">
                     <h1 class="page-header">Admin Dashboard</h1>
-            
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="card text-white bg-warning mb-3">
@@ -33,7 +33,7 @@ $session_id = $_SESSION['user_id'];
                         <div class="card-body">
                             <h5 class="card-title"><?php include 'counter/anouncementCounter.php'; ?></h5>
                         </div>
-                        <a class="text-decoration-none" href="viewannouncement.php">
+                        <a href="viewannouncement.php">
                             <div class="card-footer text-white text-left">
                                 View Details 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">
@@ -49,7 +49,7 @@ $session_id = $_SESSION['user_id'];
                         <div class="card-body">
                             <h5 class="card-title"><?php include 'counter/DonarCounter.php'; ?></h5>
                         </div>
-                        <a class="text-decoration-none" href="viewdonor.php">
+                        <a href="viewdonor.php">
                             <div class="card-footer text-white">
                                 View Details 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">
@@ -65,7 +65,7 @@ $session_id = $_SESSION['user_id'];
                         <div class="card-body">
                             <h5 class="card-title"><?php include 'counter/bloodCounter.php'; ?></h5>
                         </div>
-                        <a class="text-decoration-none" href="viewblood.php">
+                        <a href="viewblood.php">
                             <div class="card-footer text-white">
                                 View Details 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">
@@ -81,7 +81,7 @@ $session_id = $_SESSION['user_id'];
                         <div class="card-body">
                             <h1>Save Life</h1>
                         </div>
-                        <a class="text-decoration-none" href="addblood.php">
+                        <a href="addblood.php">
                             <div class="card-footer text-white">
                                 Donate Blood Now! 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">
@@ -94,7 +94,6 @@ $session_id = $_SESSION['user_id'];
             </div>
         </div>
     </div>
-    <?php include 'includes/bodyScript.php' ?>
     <?php include 'includes/footerData.php' ?>
 </body>
 
