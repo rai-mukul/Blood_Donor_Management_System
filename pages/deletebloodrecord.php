@@ -11,10 +11,19 @@ if (isset($_GET['id'])) {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
 
-        echo "DELETED";
-        header('Location: deleteblood.php');
+        // Set session variable for success message
+        $_SESSION['message'] = "Blood details deleted successfully.";
+        header('Location: manage_collections.php?success=true');
+        exit(); // Ensure script stops here
     } catch (PDOException $e) {
-        echo "ERROR!! " . $e->getMessage();
+        // Set session variable for error message
+        $_SESSION['error'] = "Error: " . $e->getMessage();
+        header('Location: manage_collections.php?success=false ');
+        exit(); // Ensure script stops here
     }
 }
+
+// Redirect if accessed directly without id
+header('Location: manage_collections.php');
+exit();
 ?>

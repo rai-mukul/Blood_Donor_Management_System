@@ -1,3 +1,13 @@
+<?php
+session_start();
+require_once('auth.php');
+checkAuthorization();
+
+if (isset($_SESSION['error_message']) && isset($_SESSION['redirect_url'])) {
+    header("Refresh: 0; URL=" . $_SESSION['redirect_url']); // Redirect after 5 seconds
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,9 +20,12 @@
 
     <div class="wrapper">
         <?php include 'includes/sidebar.php' ?>
-        <div class="main p-2">
+        <div class="main p-1">
+            <h4 class="card-title p-1">Add Donor's Detail</h4>
+            <hr class="border border-success border-2 opacity-50 w-25">
+            </hr>
             <div class="container-fluid">
-                <h1 class="page-header">Add Donor's Detail</h1>
+
                 <div class="card p-1">
                     <div class="card-header">
                         Please fill up the form below:
@@ -116,7 +129,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success" style="border-radius:0%;" id="submitBtn" disabled>Submit Form</button>
+                            <div class="pt-3">
+                                <button type="submit" class="btn btn-success" style="border-radius:0%;" id="submitBtn" disabled>Submit Form</button>
+                            </div>
                         </form>
                     </div>
                 </div>

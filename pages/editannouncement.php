@@ -1,3 +1,13 @@
+<?php
+session_start();
+require_once('auth.php');
+checkAuthorization();
+
+if (isset($_SESSION['error_message']) && isset($_SESSION['redirect_url'])) {
+    header("Refresh: 0; URL=" . $_SESSION['redirect_url']); // Redirect after 5 seconds
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

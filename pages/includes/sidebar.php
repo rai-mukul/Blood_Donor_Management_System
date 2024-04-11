@@ -29,7 +29,7 @@
                     <a href="viewannouncement.php" class="sidebar-link text-decoration-none">View Announcement</a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="editannounceform.php" class="sidebar-link text-decoration-none">Manage Announcement</a>
+                    <a href="manage_announcement.php" class="sidebar-link text-decoration-none">Manage Announcement</a>
                 </li>
             </ul>
         </li>
@@ -47,10 +47,7 @@
                     <a href="viewblood.php" class="sidebar-link text-decoration-none">View Blood</a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="editblood.php" class="sidebar-link text-decoration-none">Edit Blood</a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="deleteblood.php" class="sidebar-link text-decoration-none">Delete Blood</a>
+                    <a href="manage_collections.php" class="sidebar-link text-decoration-none">Manage Blood</a>
                 </li>
             </ul>
         </li>
@@ -58,20 +55,17 @@
             <a href="#" class="sidebar-link collapsed has-dropdown text-decoration-none" data-bs-toggle="collapse"
                 data-bs-target="#donor" aria-expanded="false" aria-controls="donor">
                 <i class="lni lni-users"></i>
-                <span>Blood Collection</span>
+                <span>Donor Section</span>
             </a>
             <ul id="donor" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                 <li class="sidebar-item">
                     <a href="adddonor.php" class="sidebar-link text-decoration-none">Add Donor</a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="viewdonor.php" class="sidebar-link text-decoration-none">View Donor</a>
+                    <a href="viewdonor.php" class="sidebar-link text-decoration-none">View Donors</a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="edit_donorData.php" class="sidebar-link text-decoration-none">Edit Donor</a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="delete_donors_detail.php" class="sidebar-link text-decoration-none">Delete Donor</a>
+                    <a href="manage_donors.php" class="sidebar-link text-decoration-none">Manage Donors</a>
                 </li>
             </ul>
         </li>

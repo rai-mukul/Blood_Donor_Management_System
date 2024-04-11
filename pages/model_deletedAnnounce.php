@@ -1,4 +1,7 @@
 <?php
+session_start();
+require_once('auth.php');
+checkAuthorization();
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -10,10 +13,12 @@ if (isset($_GET['id'])) {
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
     if ($stmt->execute()) {
-        echo "DELETED";
-        header('Location: editannounceform.php');
+        $_SESSION['success_message'] = "Announcement successfully deleted.";
     } else {
-        echo "ERROR!!";
+        $_SESSION['error_message'] = "Error deleting announcement.";
     }
+
+    header('Location: manage_announcement.php');
+    exit();
 }
 ?>

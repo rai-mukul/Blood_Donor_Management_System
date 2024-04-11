@@ -1,3 +1,13 @@
+<?php
+session_start();
+require_once('auth.php');
+checkAuthorization();
+
+if (isset($_SESSION['error_message']) && isset($_SESSION['redirect_url'])) {
+    header("Refresh: 0; URL=" . $_SESSION['redirect_url']); // Redirect after 5 seconds
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,39 +19,36 @@
 <body>
     <div class="wrapper">
         <?php include 'includes/sidebar.php' ?>
-        <div class="main p-2">
+        <div class="main p-1">
+            <h4 class="card-title p-1">Blood Collection</h4>
+            <hr class="border border-success border-2 opacity-50 w-25">
+            </hr>
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">Blood Collection</h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card p-1">
-                            <div class="card-header"> Total Records of available bloods </div>
-                            <div class="card-body">
-                                <!-- Add search form -->
-                                <form method="post" action="" class="pb-3">
-                                    <div class="form-group">
-                                        <label for="search">Search:</label>
-                                        <input type="text" class="form-control" id="search" name="search" placeholder="Enter search term">
-                                    </div>
-                                    <div class="pt-3">
-                                        <button type="submit" class="btn btn-primary" style="margin: 4px">Search</button>
-                                    </div>
-                                </form>
 
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                        <?php
-                                        include "dbconnect.php";
+                <div class="card p-1">
+                    <div class="card-header"> Total Records of available bloods </div>
+                    <div class="card-body">
+                        <!-- Add search form -->
+                        <form method="post" action="" class="pb-3">
+                            <div class="form-group">
+                                <label for="search">Search:</label>
+                                <input type="text" class="form-control" id="search" name="search" placeholder="Enter search term">
+                            </div>
+                            <div class="pt-3">
+                                <button type="submit" class="btn btn-primary" style="margin: 4px">Search</button>
+                            </div>
+                        </form>
 
-                                        try {
-                                            // Check if search form is submitted
-                                            if (isset($_POST['search'])) {
-                                                $search = $_POST['search'];
-                                                $qry = "SELECT * FROM blood WHERE 
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <?php
+                                include "dbconnect.php";
+
+                                try {
+                                    // Check if search form is submitted
+                                    if (isset($_POST['search'])) {
+                                        $search = $_POST['search'];
+                                        $qry = "SELECT * FROM blood WHERE 
                                                         bloodgroup LIKE '%$search%' OR 
                                                         name LIKE '%$search%' OR 
                                                         gender LIKE '%$search%' OR 
@@ -51,13 +58,13 @@
                                                         contact LIKE '%$search%' OR 
                                                         bloodqty LIKE '%$search%' OR 
                                                         collection LIKE '%$search%'";
-                                            } else {
-                                                $qry = "SELECT * FROM blood";
-                                            }
+                                    } else {
+                                        $qry = "SELECT * FROM blood";
+                                    }
 
-                                            $stmt = $pdo->query($qry);
+                                    $stmt = $pdo->query($qry);
 
-                                            echo "
+                                    echo "
                                                 <thead>
                                                     <tr>
                                                         <th>Blood Group</th>
@@ -73,8 +80,8 @@
                                                     </tr>
                                                 </thead>";
 
-                                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                                echo "
+                                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                        echo "
                                                     <tbody>
                                                         <tr class='gradeA'>
                                                             <td>" . $row['bloodgroup'] . "</td>
@@ -90,18 +97,16 @@
                                                         </tr>
                                                     <tbody>
                                                 ";
-                                            }
-                                        } catch (PDOException $e) {
-                                            echo "Error: " . $e->getMessage();
-                                        } finally {
-                                            // Close the connection
-                                            $pdo = null;
-                                        }
+                                    }
+                                } catch (PDOException $e) {
+                                    echo "Error: " . $e->getMessage();
+                                } finally {
+                                    // Close the connection
+                                    $pdo = null;
+                                }
 
-                                        ?>
-                                    </table>
-                                </div>
-                            </div>
+                                ?>
+                            </table>
                         </div>
                     </div>
                 </div>

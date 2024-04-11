@@ -1,3 +1,13 @@
+<?php
+session_start();
+require_once('auth.php');
+checkAuthorization();
+
+if (isset($_SESSION['error_message']) && isset($_SESSION['redirect_url'])) {
+    header("Refresh: 0; URL=" . $_SESSION['redirect_url']); // Redirect after 5 seconds
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,13 +19,15 @@
 <body>
     <div class="wrapper">
         <?php include 'includes/sidebar.php' ?>
-        <div class="main p-2">
-
-            <h1 class="page-header">Add Blood Details</h1>
+        <div class="main p-1">
+            <h4 class="card-title p-1">Add Blood Details</h4>
+            <hr class="border border-success border-2 opacity-50 w-25">
+            </hr>
 
             <div class="card p-1">
+                <div class="card-header">Please fill up the form below:</div>
+
                 <div class="card-body">
-                    <h5 class="card-title">Please fill up the form below:</h5>
 
                     <form role="form" action="model_addBlood.php" method="post">
                         <div class="row">

@@ -1,3 +1,23 @@
+<?php
+session_start();
+require_once('auth.php');
+checkAuthorization();
+
+// Check for error or success messages
+$message = "";
+$messageClass = "";
+
+if (isset($_SESSION['error_message'])) {
+    $message = $_SESSION['error_message'];
+    $messageClass = "alert alert-danger"; // CSS class for error message
+    unset($_SESSION['error_message']); // Clear the session variable
+} elseif (isset($_SESSION['success_message'])) {
+    $message = $_SESSION['success_message'];
+    $messageClass = "alert alert-success"; // CSS class for success message
+    unset($_SESSION['success_message']); // Clear the session variable
+}
+?>
+
 <html lang="en">
 
 <head>
@@ -6,18 +26,34 @@
 </head>
 
 <body>
-<div class="wrapper">
+    <div class="wrapper">
         <?php include 'includes/sidebar.php' ?>
-        <div class="main p-2">
-            <div class="container-fluid">
-                <h1 class="page-header">View Announcements</h1>
+        <div class="main p-1">
 
+
+            <h4 class="card-title p-1">View Announcements</h4>
+            <hr class="border border-success border-2 opacity-50 w-25">
+            </hr>
+            <div class="container-fluid">
                 <div class="card p-1">
                     <div class="card-header">
                         Total Records of announcement made
                     </div>
 
                     <div class="card-body">
+                        <!-- Display error or success message here -->
+                        <?php if (!empty($message)) : ?>
+                            <div id="alertMessage" class="<?php echo $messageClass; ?>" role="alert">
+                                <?php echo $message; ?>
+                            </div>
+                            <script>
+                                // JavaScript to hide the message after 5 seconds
+                                setTimeout(function() {
+                                    document.getElementById('alertMessage').style.display = 'none';
+                                }, 5000); // 5000 milliseconds = 5 seconds
+                            </script>
+                        <?php endif; ?>
+
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>

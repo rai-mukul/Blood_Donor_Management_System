@@ -1,3 +1,13 @@
+<?php
+session_start();
+require_once('auth.php');
+checkAuthorization();
+
+if (isset($_SESSION['error_message']) && isset($_SESSION['redirect_url'])) {
+    header("Refresh: 0; URL=" . $_SESSION['redirect_url']); // Redirect after 5 seconds
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,13 +20,11 @@
 <body>
     <div class="wrapper">
         <?php include 'includes/sidebar.php' ?>
-        <div class="main p-2">
+        <div class="main p-1">
+            <h4 class="card-title p-1">Donors Details</h4>
+            <hr class="border border-success border-2 opacity-50 w-25">
+            </hr>
             <div class="container-fluid">
-                <div class="row">
-                    <div class=".col-lg-12">
-                        <h1 class="page-header">Donors Detail</h1>
-                    </div>
-                </div>
                 <div class="card p-1">
                     <div class="card-header">
                         Total Records of available donors
@@ -25,7 +33,7 @@
                     <div class="card-body">
                         <!-- Add search form -->
                         <form method="post" action="" class="d-flex py-2" role="search">
-                            <input class="form-control me-2 w-auto"  id="search" name="search"  type="Enter Search Terms" placeholder="Search" aria-label="Search">
+                            <input class="form-control me-2 w-auto" id="search" name="search" type="Enter Search Terms" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
 

@@ -29,7 +29,7 @@
 
                                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                 ?>
-                                    <form role="form" action="model_editBlood.php" method="post">
+                                    <form role="form" action="model_manage_collections.php" method="post">
                                         <div class="row">
                                             <div class="form-group col-lg-6 pt-3">
                                                 <label>Enter Full Name</label>
