@@ -35,26 +35,20 @@ if (isset($_SESSION['error_message']) && isset($_SESSION['redirect_url'])) {
 
                         <!-- HTML content of manage_collections.php -->
 
-                        <?php
-                        // Check if session variable exists for message
-                        if (isset($_SESSION['message'])) {
-                            // Display success message
-                            echo '<div id="message" style="display: block; background-color: #00FF00;">' . $_SESSION['message'] . '</div>';
-                            unset($_SESSION['message']); // Clear the message after displaying
-                        } elseif (isset($_SESSION['error'])) {
-                            // Display error message
-                            echo '<div id="message" style="display: block; background-color: #FF0000;">' . $_SESSION['error'] . '</div>';
-                            unset($_SESSION['error']); // Clear the message after displaying
-                        }
-                        ?>
-
-                        <script>
-                            // Hide message after 5 seconds
-                            setTimeout(function() {
-                                document.getElementById('message').style.display = 'none';
-                            }, 5000);
-                        </script>
-
+                      <!-- Display error or success message here -->
+						<?php if (!empty($_SESSION['error_message']) || !empty($_SESSION['success_message'])) : ?>
+							<div id="alertMessage" class="<?php echo !empty($_SESSION['error_message']) ? 'alert alert-danger' : 'alert alert-success'; ?>" role="alert">
+								<?php echo !empty($_SESSION['error_message']) ? $_SESSION['error_message'] : $_SESSION['success_message']; ?>
+							</div>
+							<?php unset($_SESSION['error_message']); ?>
+							<?php unset($_SESSION['success_message']); ?>
+							<script>
+								// JavaScript to hide the message after 5 seconds
+								setTimeout(function() {
+									document.getElementById('alertMessage').style.display = 'none';
+								}, 5000); // 5000 milliseconds = 5 seconds
+							</script>
+						<?php endif; ?>
                         <!-- Continue with the rest of the HTML content of manage_collections.php -->
 
                         <div class="table-responsive">
@@ -77,7 +71,6 @@ if (isset($_SESSION['error_message']) && isset($_SESSION['redirect_url'])) {
                                                     <th>Gender</th>
                                                     <th>D.O.B</th>
                                                     <th>Weight</th>
-                                                    <th>Address</th>
                                                     <th>Zip Code</th>
                                                     <th>Contact</th>
                                                     <th>Quantity</th>
@@ -97,7 +90,6 @@ if (isset($_SESSION['error_message']) && isset($_SESSION['redirect_url'])) {
                                                         <td>{$row['gender']}</td>
                                                         <td>{$row['dob']}</td>
                                                         <td>{$row['weight']}</td>
-                                                        <td>{$row['address']}</td>
                                                         <td>{$row['zipCode']}</td>
                                                         <td>{$row['contact']}</td>
                                                         <td>{$row['bloodqty']}</td>

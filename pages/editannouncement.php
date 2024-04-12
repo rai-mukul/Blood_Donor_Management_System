@@ -39,7 +39,7 @@ if (isset($_SESSION['error_message']) && isset($_SESSION['redirect_url'])) {
 
                         if ($row) {
                     ?>
-                            <form role="form" action="editedannounce.php" method="post">
+                            <form role="form" action="model_editAnnouncement.php" method="post">
                                 <div class="row pt-4">
                                     <div class="form-group col-lg-6">
                                         <label>Announcement Title</label>

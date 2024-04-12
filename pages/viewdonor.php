@@ -7,6 +7,19 @@ if (isset($_SESSION['error_message']) && isset($_SESSION['redirect_url'])) {
     header("Refresh: 0; URL=" . $_SESSION['redirect_url']); // Redirect after 5 seconds
     exit();
 }
+// Check for error or success messages
+$message = "";
+$messageClass = "";
+
+if (isset($_SESSION['error_message'])) {
+    $message = $_SESSION['error_message'];
+    $messageClass = "alert alert-danger"; // CSS class for error message
+    unset($_SESSION['error_message']); // Clear the session variable
+} elseif (isset($_SESSION['success_message'])) {
+    $message = $_SESSION['success_message'];
+    $messageClass = "alert alert-success"; // CSS class for success message
+    unset($_SESSION['success_message']); // Clear the session variable
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +44,18 @@ if (isset($_SESSION['error_message']) && isset($_SESSION['redirect_url'])) {
                     </div>
 
                     <div class="card-body">
+                   <!-- Display error or success message here -->
+                   <?php if (!empty($message)) : ?>
+                            <div id="alertMessage" class="<?php echo $messageClass; ?>" role="alert">
+                                <?php echo $message; ?>
+                            </div>
+                            <script>
+                                // JavaScript to hide the message after 5 seconds
+                                setTimeout(function() {
+                                    document.getElementById('alertMessage').style.display = 'none';
+                                }, 5000); // 5000 milliseconds = 5 seconds
+                            </script>
+                        <?php endif; ?>
                         <!-- Add search form -->
                         <form method="post" action="" class="d-flex py-2" role="search">
                             <input class="form-control me-2 w-auto" id="search" name="search" type="Enter Search Terms" placeholder="Search" aria-label="Search">

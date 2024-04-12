@@ -32,7 +32,7 @@ if (isset($_POST['name'])) {
     $insertStmt->bindParam(':dpassword', $dpassword);
     
     if ($insertStmt->execute()) {
-        header('Location: addDonor.php?success=true'); 
+        header('Location: viewdonor.php?success=true'); 
         exit;  
     } else {
         echo "ERROR";

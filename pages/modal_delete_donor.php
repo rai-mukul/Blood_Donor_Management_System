@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
         $stmt->execute();
 
         echo "DELETED";
-        header('Location: delete_donors_detail.php');
+        header('Location: viewdonor.php');
     } catch (PDOException $e) {
         echo "ERROR: " . $e->getMessage();
     }

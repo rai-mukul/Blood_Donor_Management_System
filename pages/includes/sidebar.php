@@ -70,9 +70,15 @@
             </ul>
         </li>
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link text-decoration-none">
+            <a href="user_profile.php" class="sidebar-link text-decoration-none">
                 <i class="lni lni-user"></i>
                 <span>User Profile</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a href="update_password.php" class="sidebar-link text-decoration-none">
+                <i class="lni lni-user"></i>
+                <span>Change Password</span>
             </a>
         </li>
     </ul>

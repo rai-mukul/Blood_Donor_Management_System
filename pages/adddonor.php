@@ -30,14 +30,7 @@ if (isset($_SESSION['error_message']) && isset($_SESSION['redirect_url'])) {
                     <div class="card-header">
                         Please fill up the form below:
                     </div>
-                    <?php if (isset($_GET['success']) && $_GET['success'] == 'true') { ?>
-                        <div id="successAlert" class="alert alert-success">Donor added successfully!</div>
-                        <script>
-                            setTimeout(function() {
-                                $('#successAlert').fadeOut('slow');
-                            }, 5000);
-                        </script>
-                    <?php } ?>
+                    
                     <div class="card-body">
                         <form role="form" id="addDonorForm" action="modal_addDonor.php" method="post" autocomplete="off">
                             <div class="row">
