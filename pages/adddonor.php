@@ -183,7 +183,7 @@ if (isset($_SESSION['error_message']) && isset($_SESSION['redirect_url'])) {
                             $('#emailAvailability').show();
 
                             // Enable/disable the submit button based on availability
-                            var isAvailable = data.indexOf("Email available") !== -1;
+                            var isAvailable = data.indexOf("Email available - New Donor") !== -1;
                             $("#submitBtn").prop("disabled", !isAvailable);
                         }
                     });

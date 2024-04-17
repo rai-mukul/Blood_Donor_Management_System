@@ -11,9 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
-        echo "<span style='color: red;'>Email already in use</span>";
+        echo "<span style='color: red;'>Donor is already registered.</span>";
     } else {
-        echo "<span style='color: green;'>Email available</span>";
+        echo "<span style='color: green;'>Email available - New Donor</span>";
     }
 }
 ?>
